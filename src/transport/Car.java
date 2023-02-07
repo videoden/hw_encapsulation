@@ -12,7 +12,8 @@ public class Car {
     private String regNumber;
     private final int numberOfSeats;
     private boolean tireSummer;
-    int month;
+    private Key key;
+
 
 
     public Car(String brand,
@@ -25,7 +26,8 @@ public class Car {
                String bodyType,
                String regNumber,
                int numberOfSeats,
-               boolean tire) {
+               boolean tireSummer,
+               Key key) {
         this.brand = (brand == null || brand.isEmpty() ? "default" : brand);
         this.model = (model == null || model == "" ? "default" : model);
         setEngineVolume(engineVolume);
@@ -37,7 +39,37 @@ public class Car {
         setRegNumber(regNumber);
         this.numberOfSeats = (numberOfSeats <= 0 ? 5 : getNumberOfSeats());
         this.tireSummer = tireSummer;
+        setKey(key);
+
+
+
     }
+
+    public static class Key {
+        private final boolean remoteEngineStart;
+        private final boolean keylessEntry;
+
+        @Override
+        public String toString() {
+            return (remoteEngineStart ? "\n удаленный запуск двигателя" : "\n без удаленного запуска двигателя") + ", " +
+                    (keylessEntry ? "\n безключевой доступ" : "\n бесключевой доступ отсутствует");
+        }
+
+        public Key(boolean remoteEngineStart, boolean keylessEntry) {
+            this.remoteEngineStart = remoteEngineStart;
+            this.keylessEntry = keylessEntry;
+
+        }
+
+        public boolean isKeylessEntry() {
+            return keylessEntry;
+        }
+
+        public boolean isRemoteEngineStart() {
+            return remoteEngineStart;
+        }
+    }
+
 
     public String getBrand() {
         return brand;
@@ -117,6 +149,16 @@ public class Car {
         this.tireSummer = tireSummer;
     }
 
+    public Key getKey() {
+        return key;
+    }
+
+    public void setKey(Key key) {
+        if (key == null) {
+            key = new Key(false, false);
+        }
+        this.key = key;
+    }
 
     public void changeTires(int month) {
         if ((month == 11||month==12)|| (month >= 1 && month <=3)) {
@@ -129,7 +171,7 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car" +
+        return "\nCar" +
                 "\n марка: " + brand +
                 "\n модель: " + model +
                 "\n объём двигателя: " + engineVolume +
@@ -140,6 +182,7 @@ public class Car {
                 "\n тип кузова: " + bodyType +
                 "\n номер: " + regNumber +
                 "\n вместимость: " + numberOfSeats +
-                "\n резина: " + (tireSummer ? "летняя" : "зимняя");
+                "\n резина: " + (tireSummer ? "летняя" : "зимняя")+key;
+
     }
 }

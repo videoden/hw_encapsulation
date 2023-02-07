@@ -14,7 +14,8 @@ public class Main {
                 "седан",
                 "e000уф",
                 5,
-                true);
+                true,
+                new Car.Key(true,true));
         Car audi = new Car(
                 "Audi",
                 "A8 50 L TDI quattro",
@@ -26,7 +27,8 @@ public class Main {
                 "седан",
                 "e000уф",
                 5,
-                true);
+                true,
+                null);
         Car bmw = new Car(
                 "BMW",
                 "Z8",
@@ -38,7 +40,8 @@ public class Main {
                 "седан",
                 "e000уф",
                 5,
-                true);
+                true,
+                new Car.Key(false,false));
         Car kia = new Car(
                 "Kia",
                 "Sportage 4-го поколения",
@@ -50,7 +53,8 @@ public class Main {
                 "седан",
                 "e000уф",
                 5,
-                true);
+                true,
+                null);
         Car hyundai = new Car(
                 "Hyundai",
                 "Avante",
@@ -62,7 +66,8 @@ public class Main {
                 "седан",
                 "e000уф",
                 5,
-                false);
+                false,
+                new Car.Key(true,false));
 
         System.out.println(lada.toString());
         System.out.println(audi.toString());
