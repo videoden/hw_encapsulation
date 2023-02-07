@@ -67,7 +67,7 @@ public class Main {
                 "e000уф",
                 5,
                 false,
-                new Car.Key(true,false));
+                null);
 
         System.out.println(lada.toString());
         System.out.println(audi.toString());
